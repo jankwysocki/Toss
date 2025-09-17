@@ -1,0 +1,59 @@
+:root {
+  --bg: #f5f5f5;
+  --fg: #101010;
+  --border: #e6e6e6;
+  --muted: #585858;
+  --btn: #101010;
+  --btnfg: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+/* Popup */
+.popup {
+  padding: 12px;
+  width: 320px;
+}
+
+.row { margin: 10px 0; }
+.label { display: block; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
+.input, select, input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--fg);
+}
+.btn {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--btn);
+  color: var(--btnfg);
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.small { color: var(--muted); font-size: 12px; }
+.hline { height: 1px; background: var(--border); margin: 8px 0; }
+
+/* Options page centered card */
+.options-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.card {
+  width: 40vw; max-width: 720px; min-width: 360px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.card h2 { margin: 0 0 8px 0; font-size: 18px; }

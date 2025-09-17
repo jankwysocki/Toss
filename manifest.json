@@ -1,0 +1,10 @@
+{
+  "manifest_version": 1,
+  "name": "Toss",
+  "description": "Send current window's tabs to a Notion page as bookmarks/links.",
+  "version": "0.1.0",
+  "action": { "default_popup": "popup.html" },
+  "options_page": "options.html",
+  "permissions": ["tabs", "storage"],
+  "background": { "service_worker": "service_worker.js" }
+}
