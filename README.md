@@ -15,18 +15,18 @@ A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion 
    - Go to `chrome://extensions`
    - Enable **Developer mode**
    - Click **Load unpacked** and select the project folder
-2. Open the extension **Options**:
-   - Paste your Notion **integration token** (`secret_...`)
-   - (Optional) Default Parent Page ID
-   - (Optional) Adjust page title template and default format
 
-## Notion prerequisites
-1) Create an internal integration: https://www.notion.so/profile/integrations (copy the secret token).
-2) Open your target **Parent Page** in Notion → Share → invite your integration (can edit).
-3) In the extension Options:
-   - Paste your integration token.
-   - Paste the Parent Page share link (or ID).
-   - Choose Default Target and Default Format.
+2. Prepare your Notion integration:
+   - Create an internal integration at https://www.notion.so/profile/integrations and copy the **secret token**.
+   - In Notion, open the **Parent Page** you want to use → **Share** → invite your integration (with edit access).
+   - Copy the Parent Page link from Notion (Share → Copy link).
+
+3. Open the extension **Options** in Chrome:
+   - Paste your Notion **integration token** (`secret_...`)
+   - Paste the **Parent Page** share link (or ID — the extension will normalize it automatically)
+   - Choose a **Default Target** (Active Window or All Windows)
+   - Choose a **Default Format** (Bookmarks, Link mentions, Bulleted list)
+   - (Optional) Adjust the page title template (`Tabs – {{date}} {{time}}`)
 
 ## Usage
 1) Open a Chrome window with the tabs you want to save
