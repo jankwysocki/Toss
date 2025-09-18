@@ -1,5 +1,4 @@
-// MV3: bring helper funcs into global scope
-importScripts('notion.js');
+importScripts('utils.js', 'notion.js');
 
 function nowParts() {
   const d = new Date();
@@ -14,61 +13,50 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.action !== 'SAVE_TABS') return;
 
   (async () => {
-    const { notionToken, parentPageId: defaultParent, titleTemplate } =
-      await chrome.storage.local.get(['notionToken','parentPageId','titleTemplate']);
+    const { notionToken, parentPageId: storedParent, titleTemplate, defaultTarget } =
+      await chrome.storage.local.get(['notionToken','parentPageId','titleTemplate','defaultTarget']);
 
     if (!notionToken) {
       sendResponse({ ok:false, error:'Notion token missing. Open the Options page.' });
       return;
     }
+    if (!storedParent) {
+      sendResponse({ ok:false, error:'Parent Page is not set. Open the Options page and paste a Notion share link for your parent page.' });
+      return;
+    }
 
-    // Read current window tabs
-    const tabs = await chrome.tabs.query({ currentWindow: true });
+    const target = (msg.opts?.target || defaultTarget || 'current');
+    const tabs = await chrome.tabs.query(target === 'all' ? {} : { currentWindow: true });
     const cleaned = tabs
       .filter(t => /^https?:\/\//.test(t.url || ''))
       .map(t => ({ title: t.title || t.url, url: t.url }));
 
     if (!cleaned.length) {
-      sendResponse({ ok:false, error:'No http(s) tabs in this window.' });
+      sendResponse({ ok:false, error:'No http(s) tabs found for the selected target.' });
       return;
     }
-
-    const parentFromPopup = (msg.opts?.parentPageId || '').trim();
-    const parentToUse = parentFromPopup || defaultParent || '';
 
     const { date, time } = nowParts();
     const pageTitle = (titleTemplate || 'Tabs – {{date}} {{time}}')
       .replace('{{date}}', date)
       .replace('{{time}}', time);
 
-    let created;
-    try {
-      created = await notionCreatePage(notionToken, parentToUse, pageTitle);
-    } catch (e) {
-      // If user gave no parent and workspace creation failed (permissions), guide them.
-      if (!parentToUse) {
-        sendResponse({ ok:false, error:'Workspace create failed. Provide a Parent Page ID and try again.' });
-        return;
-      }
-      throw e;
-    }
+    const created = await notionCreatePage(notionToken, storedParent, pageTitle);
 
     const format = ['bookmark','mention','bulleted'].includes(msg.opts?.format)
       ? msg.opts.format : 'bookmark';
-
     const children = cleaned.map(t => makeBlock(t, format));
 
-    // Append in chunks of 100 to respect Notion limits
     for (let i = 0; i < children.length; i += 100) {
       await notionAppendChildren(notionToken, created.id, children.slice(i, i + 100));
-      await new Promise(r => setTimeout(r, 300)); // gentle pacing
+      await new Promise(r => setTimeout(r, 300));
     }
 
     sendResponse({ ok:true, count: cleaned.length, pageUrl: created.url });
   })().catch(err => {
-    console.error(err);
+    console.error('[Toss] Error:', err);
     sendResponse({ ok:false, error: String(err.message || err) });
   });
 
-  return true; // keep channel open
+  return true;
 });

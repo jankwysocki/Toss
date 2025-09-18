@@ -2,33 +2,43 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Toss → Notion — Setup</title>
+  <title>Toss Setup</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="options-wrap">
     <div class="card">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <img src="arrows.svg" alt="" width="20" height="20">
+      <div class="card-header">
+        <img src="logo.svg" alt="Toss Logo">
         <h2>Toss Setup</h2>
       </div>
 
+      <p class="small" style="margin-top:0">
+        This extension creates a new sub-page under your selected Notion parent page and adds your tabs there as links.
+        Make sure your Notion integration has access to that parent page (<a href="https://www.notion.so/profile/integrations">Integrations</a>).
+      </p>
+
       <div class="row">
-        <label class="label">Integration token (secret_...)</label>
-        <input id="token" type="password" class="input">
+        <label class="label">Integration token</label>
+        <input id="token" type="password" class="input" placeholder="secret_...">
       </div>
 
       <div class="row">
-        <label class="label">Default Parent Page ID (optional)</label>
-        <input id="parentId" type="text" class="input">
+        <label class="label">Parent Page</label>
+        <input id="parentId" type="text" class="input"
+               placeholder="Paste Notion share link or ID">
+        <div class="small">Required. The new page with your tabs will be created under this parent.</div>
       </div>
 
       <div class="row">
-        <label class="label">Page title template</label>
-        <input id="titleTpl" type="text" class="input" placeholder="Tabs – {{date}} {{time}}">
+        <label class="label">Default target</label>
+        <select id="defaultTarget" class="input">
+          <option value="current">Active Window</option>
+          <option value="all">All Windows</option>
+        </select>
       </div>
 
       <div class="row">
@@ -40,15 +50,19 @@
         </select>
       </div>
 
+      <div class="row">
+        <label class="label">Page title template</label>
+        <input id="titleTpl" type="text" class="input" placeholder="Tabs – {{date}} {{time}}">
+      </div>
+
       <div class="row" style="display:flex;align-items:center;gap:12px">
         <button id="save" class="btn">Save</button>
         <span id="msg" class="small"></span>
       </div>
-
-      <p class="small">Tip: You can override the Parent Page ID per-save from the popup.</p>
     </div>
   </div>
 
+  <script src="utils.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

@@ -1,12 +1,12 @@
-#Toss
+# Toss
 ## Send Tabs → Notion
 
 A minimalist Chrome (MV3) extension that exports all tabs from the **current window** to a new Notion page — as **web bookmarks**, **link mentions**, or a **bulleted list**.
 
 ## Features
 - One-click: capture current window’s tabs
+- Selectable target: Active Window, All Windows
 - Three formats: Bookmarks, Link mentions, Bulleted list
-- Parent Page ID **optional**: if provided → save there; if not → create at workspace top-level
 - Clean UI (IBM Plex Mono), privacy-friendly (no servers)
 
 ## Install (Unpacked)
@@ -19,12 +19,19 @@ A minimalist Chrome (MV3) extension that exports all tabs from the **current win
    - (Optional) Default Parent Page ID
    - (Optional) Adjust page title template and default format
 
+## Notion prerequisites
+1) Create an internal integration: https://www.notion.so/profile/integrations (copy the secret token).
+2) Open your target **Parent Page** in Notion → Share → invite your integration (can edit).
+3) In the extension Options:
+   - Paste your integration token.
+   - Paste the Parent Page share link (or ID).
+   - Choose Default Target and Default Format.
+
 ## Usage
-- Open a Chrome window with the tabs you want to save
-- Click the extension icon
-- (Optional) Paste a **Parent Page ID** to target a specific page
-- Pick a format → **Save tabs to Notion**
-- A new Notion page is created with all your links
+1) Open a Chrome window with the tabs you want to save
+2) Click the extension icon
+3) Pick a target and format → **Save tabs to Notion**
+4) A new Notion page is created with all your links
 
 ## Permissions
 - `tabs` (read open tabs’ titles/URLs)

@@ -6,34 +6,46 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="popup">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-    <img src="arrows.svg" alt="" width="18" height="18">
-    <strong>Toss → Notion</strong>
+  <div class="popup-header">
+    <img src="logo.svg" alt="Toss Logo">
+    <div class="popup-title">Toss</div>
   </div>
 
   <div class="row">
-    <label class="label">Parent Page ID (optional)</label>
-    <input id="parentIdInput" type="text" class="input" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx">
-    <div class="small">Leave empty to create at workspace top-level.</div>
+    <label class="label">Target</label>
+    <div class="radio-group" id="targetRadios">
+      <label class="radio-item">
+        <input type="radio" name="target" value="current" checked>
+        <span>Active Window</span>
+      </label>
+      <label class="radio-item">
+        <input type="radio" name="target" value="all">
+        <span>All Windows</span>
+      </label>
+    </div>
   </div>
 
   <div class="row">
     <label class="label">Format</label>
-    <select id="format" class="input">
-      <option value="bookmark">Web bookmarks</option>
-      <option value="mention">Link mentions</option>
-      <option value="bulleted">Bulleted list</option>
-    </select>
+    <div class="radio-group" id="formatRadios">
+      <label class="radio-item"><input type="radio" name="fmt" value="bookmark" checked><span>Web bookmarks</span></label>
+      <label class="radio-item"><input type="radio" name="fmt" value="mention"><span>Link mentions</span></label>
+      <label class="radio-item"><input type="radio" name="fmt" value="bulleted"><span>Bulleted list</span></label>
+    </div>
   </div>
 
   <div class="hline"></div>
 
   <button id="save" class="btn" disabled>Save tabs to Notion</button>
   <p id="status" class="small"></p>
+  <p class="small" style="text-align:center; margin-top:10px;">
+    <a href="#" id="openOptionsLink">Open Options</a>
+  </p>
 
+  <script src="utils.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
