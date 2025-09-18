@@ -1,12 +1,13 @@
 # Toss
-## Send Tabs → Notion
 
-A minimalist Chrome (MV3) extension that exports all tabs from the **current window** to a new Notion page — as **web bookmarks**, **link mentions**, or a **bulleted list**.
+## Send Tabs → Notion
+A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion sub-page — as **web bookmarks**, **link mentions**, or a **bulleted list**.
 
 ## Features
-- One-click: capture current window’s tabs
-- Selectable target: Active Window, All Windows
-- Three formats: Bookmarks, Link mentions, Bulleted list
+- One-click: capture tabs from your browser
+- Selectable target: **Active Window** or **All Windows**
+- Three formats: **Bookmarks**, **Link mentions**, **Bulleted list**
+- Requires a chosen **Parent Page** in Notion (new pages are created underneath it)
 - Clean UI (IBM Plex Mono), privacy-friendly (no servers)
 
 ## Install (Unpacked)
