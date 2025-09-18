@@ -1,4 +1,4 @@
-# Toss
+# ↱ Toss
 
 ## Send Tabs → Notion
 A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion sub-page — as **web bookmarks**, **link mentions**, or a **bulleted list**.
@@ -16,23 +16,21 @@ A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion 
    - Enable **Developer mode**
    - Click **Load unpacked** and select the project folder
 
-2. Prepare your Notion integration:
-   - Create an internal integration at https://www.notion.so/profile/integrations and copy the **secret token**.
-   - In Notion, open the **Parent Page** you want to use → **Share** → invite your integration (with edit access).
-   - Copy the Parent Page link from Notion (Share → Copy link).
+2. Set up your Notion integration:
+   - Create an internal integration at https://www.notion.so/profile/integrations
+   - In the new integration’s **Access** tab, add the **Parent Page** you want to use
+   - Copy the integration **secret token** (`secret_...`)
+   - Open the extension **Options** in Chrome and paste the token
+   - In Notion, open the **Parent Page** → **Share** → **Copy link**
+   - Paste the link into the extension **Options**
 
-3. Open the extension **Options** in Chrome:
-   - Paste your Notion **integration token** (`secret_...`)
-   - Paste the **Parent Page** share link (or ID — the extension will normalize it automatically)
-   - Choose a **Default Target** (Active Window or All Windows)
-   - Choose a **Default Format** (Bookmarks, Link mentions, Bulleted list)
-   - (Optional) Adjust the page title template (`Tabs – {{date}} {{time}}`)
+3. (Optional) Adjust the page title template (`Tabs – {{date}} {{time}}`)
 
 ## Usage
-1) Open a Chrome window with the tabs you want to save
-2) Click the extension icon
-3) Pick a target and format → **Save tabs to Notion**
-4) A new Notion page is created with all your links
+1. Click the extension icon in Chrome  
+2. Pick a **Target** (Active Window or All Windows) and a **Format** (Bookmarks, Link mentions, Bulleted list)  
+3. Click **Save tabs to Notion**  
+4. A new sub-page is created under your chosen Parent Page in Notion with all your links
 
 ## Permissions
 - `tabs` (read open tabs’ titles/URLs)
