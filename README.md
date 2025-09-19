@@ -3,6 +3,8 @@
 ## Send Tabs → Notion
 A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion sub-page — as **web bookmarks**, **link mentions**, or a **bulleted list**.
 
+![Toss popup](./popup.png)
+
 ## Features
 - One-click: capture tabs from your browser
 - Selectable target: **Active Window** or **All Windows**
