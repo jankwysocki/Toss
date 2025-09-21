@@ -1,15 +1,15 @@
 # ↱ Toss
 
 ## Send Tabs → Notion
-A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion sub-page — as **web bookmarks**, **link mentions**, or a **bulleted list**.
+A minimalist Chrome (MV3) extension that exports your open tabs to Notion — either as a new sub-page with **web bookmarks**, **link mentions**, or a **bulleted list**, or as a **database** where each tab is a row.
 
 ![Toss popup](./popup.png)
 
 ## Features
 - One-click: capture tabs from your browser
 - Selectable target: **Active Window** or **All Windows**
-- Three formats: **Bookmarks**, **Link mentions**, **Bulleted list**
-- Requires a chosen **Parent Page** in Notion (new pages are created underneath it)
+- Four formats: **Bookmarks**, **Link mentions**, **Bulleted list**, **Database (rows)**
+- Requires a chosen **Parent Page** in Notion (new pages/databases are created underneath it)
 - Clean UI (IBM Plex Mono), privacy-friendly (no servers)
 
 ## Install (Unpacked)
