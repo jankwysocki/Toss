@@ -47,12 +47,16 @@
           <option value="bookmark">Web bookmarks</option>
           <option value="mention">Link mentions</option>
           <option value="bulleted">Bulleted list</option>
+          <option value="database">Database (rows)</option>
         </select>
       </div>
 
       <div class="row">
         <label class="label">Page title template</label>
-        <input id="titleTpl" type="text" class="input" placeholder="Tabs – {{date}} {{time}}">
+        <input id="titleTpl" type="text" class="input" placeholder="Tabs – {{datetime}}">
+          <div class="small">
+            Available variables: <code>{{date}}</code>, <code>{{time}}</code>, <code>{{datetime}}</code>, <code>{{count}}</code>, <code>{{target}}</code>, <code>{{activeTitle}}</code>
+          </div>
       </div>
 
       <div class="row" style="display:flex;align-items:center;gap:12px">

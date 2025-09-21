@@ -34,6 +34,8 @@ A minimalist Chrome (MV3) extension that exports your open tabs to a new Notion 
 3. Click **Save tabs to Notion**  
 4. A new sub-page is created under your chosen Parent Page in Notion with all your links
 
+**Title variables:** You can use {{date}}, {{time}}, {{datetime}}, {{count}}, {{target}}, {{activeTitle}} in the Page title template. The extension replaces them when creating the page/database.
+
 ## Permissions
 - `tabs` (read open tabs’ titles/URLs)
 - `storage` (save your token and preferences locally)
